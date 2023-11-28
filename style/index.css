@@ -1,0 +1,14 @@
+.header_container {
+    height: 7vh;
+    background-color: #f0f0f0;
+}
+
+.main_container { 
+    margin-top: 10vh;
+}
+
+.main__task-list {
+    height: 100%;
+    margin: 30px 0 10vh 0;
+    font-size: .9rem;
+}

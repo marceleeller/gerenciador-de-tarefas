@@ -13,6 +13,19 @@
 }
 
 .main__img img {
-    width: 40rem;
+    width: 30rem;
     height: 100%;
 }
+
+.bi-eye-fill {
+    position: relative;
+    bottom: 30px;
+    left: 102%;
+    color: gray;
+    cursor: pointer;
+}
+
+form > p {
+    font-weight: 600;
+}
+

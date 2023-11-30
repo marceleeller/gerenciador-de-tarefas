@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de tarefas</title>
-
+    
     <!-- Links -->
+    <link rel="shortcut icon" href="/assets/list-task.svg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -14,13 +15,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/index.css">
+    <script src="/js/index.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
+    <link rel="stylesheet" href="/style/minimal.css">
 
 </head>
 <body>
     <div class="container">
         <header class="header_container fixed-top row text-center align-items-center">
-            <span class="col">Boa tarde, Marcele</span>
-            <span class="col">Sair <i class="bi bi-box-arrow-right"></i></span>
+            <span class="col" id="welcome"></span>
+            <span class="col" onclick="logout()">Sair <i class="bi bi-box-arrow-right"></i></span>
         </header>
     </div>
 
@@ -28,33 +34,36 @@
         <section class="main__task-creator col-lg-7 col-md-11 text-center">
             <h2 class="task-creator_title font-weight-bold">Gerenciador de tarefas</h2>
             <form class="px-4 mt-4">
+                <div id="msgError"></div>
+                <div id="msgSuccess"></div>
                 <div class="mb-3 ">
-                    <input type="text" class="form-control" id="task" placeholder="Tarefa" aria-describedby="Tarefa">
+                    <input type="text" class="form-control" id="newTask" placeholder="Tarefa" aria-describedby="Tarefa">
                 </div>
 
                 <div class="row">
                     <div class="mb-3 col">
-                    <input type="text" class="form-control" id="begin_date" placeholder="Data início" aria-describedby="data inicio" onfocus="this.type='date'" onblur="this.type='text'">
+                    <input type="text" class="form-control" id="newBeginDate" placeholder="Data início" aria-describedby="data inicio" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
                     </div>
                     <div class="mb-3 col">
-                        <input type="text" class="form-control" id="begin_hour" placeholder="Hora início" aria-describedby="hora inicio" onfocus="this.type='time'" onblur="this.type='text'">
+                        <input type="text" class="form-control" id="newBeginHour" placeholder="Hora início" aria-describedby="hora inicio" onfocus="this.type='time'" onblur="this.type='text'">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="mb-3 col">
-                        <input type="text" class="form-control" id="end_date" placeholder="Data término" aria-describedby="data termino" onfocus="this.type='date'" onblur="this.type='text'">
+                        <input type="text" class="form-control" id="newEndDate" placeholder="Data término" aria-describedby="data termino" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
                     </div>
                     <div class="mb-3 col">
-                        <input type="text" class="form-control" id="end_hour" placeholder="Hora término" aria-describedby="hora termino" onfocus="this.type='time'" onblur="this.type='text'">
+                        <input type="text" class="form-control" id="newEndHour" placeholder="Hora término" aria-describedby="hora termino" onfocus="this.type='time'" onblur="this.type='text'">
                     </div>
                 </div>
 
                 <div class="mb-3">
-                  <textarea class="form-control" id="description" placeholder="Descrição" rows="3" style="resize: none;"></textarea>
+                  <textarea class="form-control" id="newDescription" placeholder="Descrição" rows="3" style="resize: none;"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Criar tarefa</button>
+                <button type="submit" id="submitTask" class="btn btn-primary">Criar tarefa</button>
+                
               </form>
         </section>
         

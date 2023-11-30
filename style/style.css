@@ -26,3 +26,24 @@
     color: #0d6efd;
     font-size: 1.4rem;
 }
+
+#msgError {
+    font-size: .6rem;
+    color: #ff5555;
+    padding: .3rem;
+    display: none;
+}
+
+#msgErrorLogin {
+    font-size: .6rem;
+    color: #ff5555;
+    padding: .3rem;
+    display: none;
+}
+
+#msgSuccess{
+    font-size: .6rem;
+    color: rgb(53, 184, 53);
+    padding: .3rem;
+    display: none;
+}

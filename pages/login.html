@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
     <!-- Links -->
+    <link rel="shortcut icon" href="/assets/list-task.svg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -15,10 +16,17 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/login.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
+
+    <link rel="stylesheet" href="/style/minimal.css">
+
+    <script src="/js/register.js" defer></script>
+
 </head>
 <body>
     <div class="container-fluid">
-        <main class="main_container row  justify-content-center">
+        <main class="main_container row justify-content-center">
             <div class="main__img col-md-6 col-sm-12 align-middle">
                 <img src="/assets/login.svg" alt="usuário fazendo login" class="img-fluid mx-auto d-block ">
             </div>
@@ -26,30 +34,34 @@
             <div class="main__forms col-md-5 col-sm-12 justify-content-center align-items-center">
                 <div class="forms__login">
                     <form class="px-4">
-                        <p class="font-weight-bold">Acesse sua conta:</p>
-                        <div class="mb-3 ">
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail" aria-describedby="emailHelp">
+                        <p>Acesse sua conta:</p>
+                        <div class="mb-2 ">
+                          <input type="email" class="form-control" id="email" placeholder="E-mail" aria-describedby="email">
                         </div>
-                        <div class="mb-3">
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                        <div>
+                          <input type="password" class="form-control" id="password" placeholder="Senha">
+                          <i class="bi bi-eye-fill"></i>
                         </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
+                        <button type="submit" id="signin" class="btn btn-primary">Entrar</button>
+                        <span id="msgErrorLogin">Usuário não encontrado</span>
                       </form>
                 </div>
 
                 <div class="forms__register">
-                    <form class="px-4 mt-5">
+                    <form class="px-4 mt-4">
                         <p>Novo por aqui? Crie sua conta:</p>
-                        <div class="mb-3 ">
-                            <input type="text" class="form-control" id="exampleInputText" placeholder="Nome" aria-describedby="Name">
+                        <div class="mb-2 ">
+                            <input type="text" class="form-control" id="newName" placeholder="Nome" aria-describedby="Name">
                           </div>
-                        <div class="mb-3 ">
-                          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="E-mail" aria-describedby="emailHelp">
+                        <div class="mb-2 ">
+                          <input type="email" class="form-control" id="newEmail" placeholder="E-mail" aria-describedby="email">
                         </div>
-                        <div class="mb-3">
-                          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Senha">
+                        <div class="mb-4 ">
+                          <input type="password" class="form-control" id="newPassword" placeholder="Senha">
                         </div>
-                        <button type="submit" class="btn btn-primary">Criar tarefa</button>
+                        <button type="submit" id="register" class="btn btn-primary">Criar conta</button>
+                        <span id="msgError">Preencha todos os campos corretamente</span>
+                        <span id="msgSuccess">Criando cadastro...</span>
                       </form>
                 </div>
             </div>

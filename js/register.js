@@ -106,7 +106,7 @@ $('#signin').addEventListener('click', (evnt) => {
     });
 
     if(email.value == userValid.email && password.value == userValid.password) {
-        window.location.href = "./task_manager.html";
+        window.location.href = "pages/task_manager.html";
 
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
         localStorage.setItem('token', token);

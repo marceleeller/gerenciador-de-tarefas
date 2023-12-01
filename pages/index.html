@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de tarefas</title>
-    
+    <title>Login</title>
+
     <!-- Links -->
     <link rel="shortcut icon" href="/assets/list-task.svg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -14,99 +14,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/style/index.css">
-    <script src="/js/index.js" defer></script>
-    <script src="/js/logout.js" defer></script>
+    <link rel="stylesheet" href="/style/login.css">
 
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
+
     <link rel="stylesheet" href="/style/minimal.css">
+
+    <script src="/js/register.js" defer></script>
 
 </head>
 <body>
-    <div class="container">
-        <header class="header_container fixed-top row text-center align-items-center">
-            <div class="col text-capitalize" id="welcome"></div>
-            <div class="col" onclick="logout()">
-              <div class="logoutButton btn btn-secondary">
-                Sair
-              </div>
+    <div class="container-fluid">
+        <main class="main_container row justify-content-center">
+            <div class="main__img col-md-6 col-sm-12 align-middle">
+                <img src="/assets/Authentication.gif" alt="usuário fazendo login" class="img-fluid mx-auto d-block">
             </div>
-        </header>
+
+            <div class="main__forms col-md-5 col-sm-12 justify-content-center align-items-center py-auto ">
+                <div class="forms__login">
+                    <form class="px-4">
+                        <p>Acesse sua conta:</p>
+                        <div class="mb-2 ">
+                          <input type="email" class="form-control" id="email" placeholder="E-mail" aria-describedby="email">
+                        </div>
+                        <div>
+                          <input type="password" class="form-control" id="password" placeholder="Senha">
+                          <i class="bi bi-eye-fill"></i>
+                        </div>
+                        <button type="submit" id="signin" class="btn btn-primary">Entrar</button>
+                        <span id="msgErrorLogin">Usuário não encontrado</span>
+                      </form>
+                </div>
+
+                <div class="forms__register">
+                    <form class="px-4 mt-4">
+                        <p>Novo por aqui? Crie sua conta:</p>
+                        <div class="mb-2 ">
+                            <input type="text" class="form-control" id="newName" placeholder="Nome" aria-describedby="Name">
+                          </div>
+                        <div class="mb-2 ">
+                          <input type="email" class="form-control" id="newEmail" placeholder="E-mail" aria-describedby="email">
+                        </div>
+                        <div class="mb-4 ">
+                          <input type="password" class="form-control" id="newPassword" placeholder="Senha">
+                        </div>
+                        <button type="submit" id="register" class="btn btn-primary">Criar conta</button>
+                        <span id="msgError">Preencha todos os campos corretamente</span>
+                        <span id="msgSuccess">Criando cadastro...</span>
+                      </form>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <main class="main_container row justify-content-center">
-        <section class="main__task-creator col-lg-7 col-md-11 text-center">
-            <h2 class="task-creator_title font-weight-bold">Gerenciador de tarefas</h2>
-            <form class="px-4 mt-4">
-                <div id="msgError"></div>
-                <div id="msgSuccess"></div>
-                <div class="mb-3 ">
-                    <input type="text" class="form-control" id="newTask" placeholder="Tarefa" aria-describedby="Tarefa">
-                </div>
-
-                <div class="row">
-                    <div class="mb-3 col">
-                    <input type="text" class="form-control" id="newBeginDate" placeholder="Data início" aria-describedby="data inicio" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
-                    </div>
-                    <div class="mb-3 col">
-                        <input type="text" class="form-control" id="newBeginHour" placeholder="Hora início" aria-describedby="hora inicio" onfocus="this.type='time'" onblur="this.type='text'">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="mb-3 col">
-                        <input type="text" class="form-control" id="newEndDate" placeholder="Data término" aria-describedby="data termino" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
-                    </div>
-                    <div class="mb-3 col">
-                        <input type="text" class="form-control" id="newEndHour" placeholder="Hora término" aria-describedby="hora termino" onfocus="this.type='time'" onblur="this.type='text'">
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                  <textarea class="form-control" id="newDescription" placeholder="Descrição" rows="3" style="resize: none;"></textarea>
-                </div>
-
-                <button type="submit" id="submitTask" class="btn btn-primary">Criar tarefa</button>
-                
-              </form>
-        </section>
-        
-        <section class="main__task-list table-responsive col-lg-7 col-md-11">
-            <table class="table table-striped table-hover align-middle">
-                <thead>
-                  <tr>
-                    <th scope="col">Tarefa</th>
-                    <th scope="col">Início</th>
-                    <th scope="col">Término</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Alterar</th>
-                  </tr>
-                </thead>
-                <tbody id="taskTable">
-                </tbody>
-              </table>
-        </section>
-    </main>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modal-title">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
     <div class="container">
         <footer class="footer_container fixed-bottom row text-center align-items-center">
             <div class="footer__author col">
@@ -115,9 +76,10 @@
             <div class="footer__socials col">
                 <a href="https://github.com/marceleeller"><i class="bi bi-github"></i></a>
                 <a href="https://www.linkedin.com/in/marceleeller/"><i class="bi bi-linkedin"></i></a>
+                
             </div>
         </footer>
     </div>
-
+    
 </body>
 </html>

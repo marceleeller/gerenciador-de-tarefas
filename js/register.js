@@ -76,7 +76,7 @@ $("#register").addEventListener("click", (evnt) => {
     msgSuccess.setAttribute('style', 'display:block');
 
     setTimeout(() => {
-        window.location.href = "./login.html";
+        window.location.href = "./index.html";
     }, 2000);   
 })
 
@@ -106,7 +106,7 @@ $('#signin').addEventListener('click', (evnt) => {
     });
 
     if(email.value == userValid.email && password.value == userValid.password) {
-        window.location.href = "./index.html";
+        window.location.href = "./task_manager.html";
 
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
         localStorage.setItem('token', token);

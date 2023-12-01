@@ -50,12 +50,12 @@ let validTask, validBeginDate, validBeginHour, validEndDate, validEndHour, valid
 // wrong page
 if (localStorage.getItem('taskSelected') == null) {
     alert('Você precisa selecionar uma tarefa para acessar essa página');
-    window.location.replace('./index.html');
+    window.location.replace('./task_manager.html');
 }
 
 // cancel editing
 function cancelTask() {
-    window.location.replace('./index.html');
+    window.location.replace('./task_manager.html');
     localStorage.removeItem('taskSelected');
 }
 
@@ -159,33 +159,6 @@ deleteBtn.addEventListener('click', () =>{
 
 })
 
-
-// delete task
-// deleteBtn.addEventListener('click', () =>{
-
-//     console.log('oi')
-//     // userList.forEach(user => {
-//     //     user.tasksReg.forEach(task => {
-//     //         if(task.task == taskSelected.task) {
-//     //             let indexTask = user.tasksReg.indexOf(task);
-//     //             if (indexTask > -1) {
-//     //                 user.tasksReg.splice(indexTask, 1);
-//     //             } else {
-//     //                 return;
-//     //             }
-//     //         }
-//     //     })
-//     // });
-
-//     // localStorage.setItem('userList', JSON.stringify(userList));
-//     // msgErrorOrSuccess(msgError, 'Tarefa excluída');
-
-//     // setTimeout(() => {
-//     //     cancelTask()
-//     // }, 1000);
-// })
-
-
 // done task
 doneBtn.addEventListener('click', () => {
     userList.forEach(user => {
@@ -226,35 +199,3 @@ notDoneBtn.addEventListener('click', () => {
         cancelTask()
     }, 1000);
 })
-
-
-
-// let yesDelete = $('#yesDelete')
-
-// // delete task
-// deleteBtn.addEventListener('click', () =>{
-//     if(yesDelete.addEventListener('click', () => true)){
-//         userList.forEach(user => {
-//             user.tasksReg.forEach(task => {
-//                 if(task.task == taskSelected.task) {
-//                     let indexTask = user.tasksReg.indexOf(task);
-//                     if (indexTask > -1) {
-//                         user.tasksReg.splice(indexTask, 1);
-//                     } else {
-//                         return;
-//                     }
-//                 }
-//             })
-//         });
-    
-
-//         localStorage.setItem('userList', JSON.stringify(userList));
-//         msgErrorOrSuccess(msgError, 'Tarefa excluída');
-
-//         setTimeout(() => {
-//             cancelTask()
-//         }, 1000);
-//     } else {
-//         return;
-//     }
-// })

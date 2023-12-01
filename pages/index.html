@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/index.css">
     <script src="/js/index.js" defer></script>
+    <script src="/js/logout.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
@@ -25,8 +26,12 @@
 <body>
     <div class="container">
         <header class="header_container fixed-top row text-center align-items-center">
-            <span class="col" id="welcome"></span>
-            <span class="col" onclick="logout()">Sair <i class="bi bi-box-arrow-right"></i></span>
+            <div class="col text-capitalize" id="welcome"></div>
+            <div class="col" onclick="logout()">
+              <div class="logoutButton btn btn-secondary">
+                Sair
+              </div>
+            </div>
         </header>
     </div>
 
@@ -67,8 +72,8 @@
               </form>
         </section>
         
-        <section class="main__task-list col-lg-7 col-md-11">
-            <table class="table table-striped">
+        <section class="main__task-list table-responsive col-lg-7 col-md-11">
+            <table class="table table-striped table-hover align-middle">
                 <thead>
                   <tr>
                     <th scope="col">Tarefa</th>
@@ -78,41 +83,29 @@
                     <th scope="col">Alterar</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>Em atraso</td>
-                    <td><button type="button" class="btn btn-warning btn-sm">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>Em atraso</td>
-                    <td><button type="button" class="btn btn-warning btn-sm">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>Em atraso</td>
-                    <td><button type="button" class="btn btn-warning btn-sm">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>DD/MM/YYYY às 00:00</td>
-                    <td>Em atraso</td>
-                    <td><button type="button" class="btn btn-warning btn-sm">Alterar</button></td>
-                  </tr>
-                  
+                <tbody id="taskTable">
                 </tbody>
               </table>
         </section>
     </main>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="container">
         <footer class="footer_container fixed-bottom row text-center align-items-center">
@@ -122,9 +115,9 @@
             <div class="footer__socials col">
                 <a href="https://github.com/marceleeller"><i class="bi bi-github"></i></a>
                 <a href="https://www.linkedin.com/in/marceleeller/"><i class="bi bi-linkedin"></i></a>
-                
             </div>
         </footer>
     </div>
+
 </body>
 </html>

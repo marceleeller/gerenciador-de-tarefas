@@ -16,51 +16,59 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/index.css">
 
+    <script src="/js/editor.js" defer></script>
+    <script src="/js/logout.js" defer></script>
     
-
 </head>
 <body>
     <div class="container">
         <header class="header_container fixed-top row text-center align-items-center">
-            <span class="col">Boa tarde, Marcele</span>
-            <span class="col">Sair <i class="bi bi-box-arrow-right"></i></span>
+            <div class="col text-capitalize" id="welcome"></div>
+            <div class="col" onclick="logout()">
+              <div class="logoutButton btn btn-secondary">
+                Sair
+              </div>
+            </div>
         </header>
     </div>
 
     <main class="main_container row justify-content-center">
-        <section class="main__task-creator col-lg-7 col-md-11 text-center ">
-            <h2 class="task-creator_title font-weight-bold">Gerenciador de tarefas</h2>
+        <section class="main__task-creator col-lg-7 col-md-12 text-center">
+            <h2 class="task-creator_title font-weight-bold">Editor de tarefa</h2>
             <form class="px-4 mt-4">
+                <div id="msgError"></div>
+                <div id="msgSuccess"></div>
                 <div class="mb-3 ">
-                    <input type="text" class="form-control" id="task" placeholder="Tarefa" aria-describedby="Tarefa">
+                    <input type="text" class="form-control" id="newTask" placeholder="Tarefa" aria-describedby="Tarefa">
                 </div>
 
                 <div class="row">
                     <div class="mb-3 col">
-                    <input type="text" class="form-control" id="begin_date" placeholder="Data início" aria-describedby="data inicio" onfocus="this.type='date'" onblur="this.type='text'">
+                    <input type="text" class="form-control" id="newBeginDate" placeholder="Data início" aria-describedby="data inicio" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
                     </div>
                     <div class="mb-3 col">
-                        <input type="text" class="form-control" id="begin_hour" placeholder="Hora início" aria-describedby="hora inicio" onfocus="this.type='time'" onblur="this.type='text'">
+                        <input type="text" class="form-control" id="newBeginHour" placeholder="Hora início" aria-describedby="hora inicio" onfocus="this.type='time'" onblur="this.type='text'">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="mb-3 col">
-                        <input type="text" class="form-control" id="end_date" placeholder="Data término" aria-describedby="data termino" onfocus="this.type='date'" onblur="this.type='text'">
+                        <input type="text" class="form-control" id="newEndDate" placeholder="Data término" aria-describedby="data termino" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
                     </div>
                     <div class="mb-3 col">
-                        <input type="text" class="form-control" id="end_hour" placeholder="Hora término" aria-describedby="hora termino" onfocus="this.type='time'" onblur="this.type='text'">
+                        <input type="text" class="form-control" id="newEndHour" placeholder="Hora término" aria-describedby="hora termino" onfocus="this.type='time'" onblur="this.type='text'">
                     </div>
                 </div>
 
                 <div class="mb-3">
-                <textarea class="form-control" id="description" placeholder="Descrição" rows="3" style="resize: none;"></textarea>
+                  <textarea class="form-control" id="newDescription" placeholder="Descrição" rows="3" style="resize: none;"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary m-1">Alterar</button>
-                <button type="submit" class="btn btn-danger m-1">Excluir</button>
-                <button type="submit" class="btn btn-success m-1">Marcar como realizada</button>
-                <button type="submit" class="btn btn-secondary m-1">Cancelar</button>
+                <button type="submit" class="btn btn-primary m-1" id="changeBtn">Alterar</button>
+                <button type="button" class="btn btn-danger m-1" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</button>
+                <button type="button" class="btn btn-success m-1" id="doneBtn">Marcar como realizada</button>
+                <button type="button" class="btn btn-warning text-white m-1" id="notDoneBtn">Marcar como não realizada</button>
+                <button type="button" class="btn btn-secondary m-1" id="cancelBtn" onclick="cancelTask()">Cancelar</button>
             </form>
         </section>
     </main>
@@ -77,5 +85,21 @@
             </div>
         </footer>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Você realmente deseja excluir essa tarefa?</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="yesDelete">Sim</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>

@@ -12,3 +12,29 @@
     margin: 30px 0 10vh 0;
     font-size: .9rem;
 }
+
+.taskName {
+    cursor: pointer;
+}
+
+.logoutButton {
+    background-color: #e3e2e2;
+    color: black;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    transition: 300ms ease;
+}
+.logoutButton:hover {
+    background-color: #0d6efd;
+}
+
+
+#doneBtn {
+    display: inline;
+}
+
+#notDoneBtn {
+    display: none;
+    text-shadow: 1px 1px 2px #c4970f
+}

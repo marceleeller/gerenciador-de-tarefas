@@ -65,7 +65,8 @@ $("#register").addEventListener("click", (evnt) => {
             nameReg: nameInput.value,
             emailReg: emailInput.value,
             passwordReg: passwordInput.value,
-            tasksReg: []
+            tasksReg: [],
+            completedTasks: []
         }
     )
 

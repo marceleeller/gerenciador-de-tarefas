@@ -8,6 +8,16 @@ let validName = false;
 let validEmail = false;
 let validPassword = false;
 
+// error and success messages
+const msgError = $('#msgError');
+const msgErrorLogin = $('#msgErrorLogin');
+const msgSuccess = $('#msgSuccess');
+
+function msgErrorOrSuccess(eOrS, msg) {
+    eOrS.setAttribute('style', 'display:block');
+    eOrS.innerHTML = (msg)
+}
+
 // Validate name
 nameInput.addEventListener('keyup', () => {
     if(nameInput.value.length <= 2) {
@@ -50,16 +60,25 @@ emailInput.addEventListener('keyup', () => {
 $("#register").addEventListener("click", (evnt) => {
     evnt.preventDefault();
 
-    const msgError = $('#msgError')
-    const msgSuccess = $('#msgSuccess')
-
     if(validName === false || validPassword === false || validateEmail === false) {
-        msgError.setAttribute('style', 'display:block');
+        msgErrorOrSuccess(msgError, 'Preencha todos os campos corretamente')
         return;
     }
 
     let userList = JSON.parse(localStorage.getItem('userList') || '[]');
 
+    var validUser = true;
+    userList.forEach(user => {
+        if(user.emailReg == emailInput.value){
+            validUser = false;
+        }
+    });
+
+    if(validUser === false) {
+        msgErrorOrSuccess(msgError, 'Usuário existente, insira um e-mail diferente')
+        return;
+    }
+    
     userList.push(
         {
             nameReg: nameInput.value,
@@ -73,11 +92,11 @@ $("#register").addEventListener("click", (evnt) => {
     localStorage.setItem('userList', JSON.stringify(userList))
 
     msgError.setAttribute('style', 'display:none');
-    msgSuccess.setAttribute('style', 'display:block');
+    msgErrorOrSuccess(msgSuccess, 'Criando cadastro...');
 
     setTimeout(() => {
         window.location.href = "./index.html";
-    }, 2000);   
+    }, 1500);   
 })
 
 // Login Usuario
@@ -105,16 +124,22 @@ $('#signin').addEventListener('click', (evnt) => {
         }
     });
 
-    if(email.value == userValid.email && password.value == userValid.password) {
-        window.location.href = "pages/task_manager.html";
+    if(email.value <= 0 && password.value <= 0) {
+        msgErrorOrSuccess(msgErrorLogin, 'Preencha todos os campos')
+
+    } else if (email.value == userValid.email && password.value == userValid.password){
+        msgErrorLogin.setAttribute('style', 'display:none');
+        msgErrorOrSuccess(msgSuccessLogin, 'Sucesso! Entrando...');
 
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
         localStorage.setItem('token', token);
         localStorage.setItem('loggedUser', JSON.stringify(userValid))
 
-
+        setTimeout(() => {
+            window.location.href = "pages/task_manager.html";
+        }, 1500); 
     } else {
-        msgErrorLogin.setAttribute('style', 'display:block');
+        msgErrorOrSuccess(msgErrorLogin, 'Usuário não encontrado')
         email.classList.add('is-invalid');
         password.classList.add('is-invalid');
     }

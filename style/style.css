@@ -30,21 +30,14 @@ body {
     font-size: 1.4rem;
 }
 
-#msgError {
+#msgError, #msgErrorLogin {
     font-size: .6rem;
     color: #ff5555;
     padding: .3rem;
     display: none;
 }
 
-#msgErrorLogin {
-    font-size: .6rem;
-    color: #ff5555;
-    padding: .3rem;
-    display: none;
-}
-
-#msgSuccess{
+#msgSuccess, #msgSuccessLogin{
     font-size: .6rem;
     color: rgb(53, 184, 53);
     padding: .3rem;

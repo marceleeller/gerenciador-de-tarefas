@@ -78,6 +78,7 @@ submitTask.addEventListener('click', evnt => {
         if(user.emailReg == loggedUser.email){
             let taskList = user.tasksReg
             taskList.push(tasks)
+            msgError.setAttribute('style', 'display:none');
             msgErrorOrSuccess(msgSuccess, 'Tarefa adicionada com sucesso!')
 
             setTimeout(() => {

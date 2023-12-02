@@ -122,6 +122,7 @@ changeBtn.addEventListener('click', evnt => {
         })
     });
     localStorage.setItem('userList', JSON.stringify(userList));
+    msgError.setAttribute('style', 'display:none');
     msgErrorOrSuccess(msgSuccess, 'Tarefa alterada com sucesso!');
 
     setTimeout(() => {
@@ -169,6 +170,7 @@ doneBtn.addEventListener('click', () => {
         })
     })
     localStorage.setItem('userList', JSON.stringify(userList));
+    msgError.setAttribute('style', 'display:none');
     msgErrorOrSuccess(msgSuccess, 'Status alterado com sucesso!');
 
     setTimeout(() => {
@@ -193,6 +195,7 @@ notDoneBtn.addEventListener('click', () => {
         })
     })
     localStorage.setItem('userList', JSON.stringify(userList));
+    msgError.setAttribute('style', 'display:none');
     msgErrorOrSuccess(msgSuccess, 'Status alterado com sucesso!');
 
     setTimeout(() => {

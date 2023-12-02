@@ -54,7 +54,7 @@ Projeto desenvolvido para o Bootcamp SharpCoders, pela Imã Tech.
 - [x] Opção para excluir tarefa, com confirmação modal.
 
 ## Autor
-Marcele Eller Gusmão Moura
+Marcele Eller Gusmão Moura <br>
 <a href="https://www.linkedin.com/in/marceleeller/">
 ![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
 

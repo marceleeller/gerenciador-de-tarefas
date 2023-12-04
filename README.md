@@ -14,12 +14,11 @@ Projeto desenvolvido para o Bootcamp SharpCoders, pela Imã Tech.
 
 
 <div align="center">
-    <img src="https://i.imgur.com/SqTnq0s.png" alt="preview" width="300px"/>
-    <img src="https://i.imgur.com/J6I3UWE.png" alt="preview" width="300"/>
-    <img src="https://i.imgur.com/c1xlo8A.png" alt="preview" width="300"/>
-    <img src="https://i.imgur.com/0viNnDJ.png" alt="preview" width="300"/>
+    <img src="https://i.imgur.com/BuCkfFR.png" alt="preview" width="350px"/>
+    <img src="https://i.imgur.com/zved2Ws.png" alt="preview" width="350px"/>
+    <img src="https://i.imgur.com/ChhR1zu.png" alt="preview" width="350px"/>
+    <img src="https://i.imgur.com/3gxER41.png" alt="preview" width="350px"/>
 </div>
-
 <p align="center">
       Um sistema de cadastro, login e gerenciamento de tarefas totalmente responsivo.
     <br />

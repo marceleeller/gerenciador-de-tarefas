@@ -8,7 +8,19 @@ if (localStorage.getItem('token') == null) {
 // Welcome / format name user
 let welcome = document.querySelector('#welcome')
 let nameLowercase = userLogged.name.toLowerCase();
-welcome.innerHTML = ('Olá, ' + nameLowercase);
+let hour = new Date()
+hour = hour.getHours()
+var greetings = ''
+if (hour >= 0 && hour < 6) {
+    greetings = 'Boa madrugada, '
+} else if (hour >= 6 && hour < 12){
+    greetings = 'Bom dia, '
+} else if (hour >= 12 && hour < 18){
+    greetings = 'Boa tarde, '
+} else {
+    greetings = 'Boa noite, '
+}
+welcome.innerHTML = (greetings + nameLowercase);
 
 //  LogOut
 function logout() {

@@ -35,3 +35,7 @@
 #doneBtn {
     display: inline;
 }
+
+#notDoneBtn {
+    display: none;
+}

@@ -18,13 +18,11 @@ const notDoneBtn = $('#notDoneBtn');
 const cancelBtn = $('#cancelBtn');
 
 userList.forEach(user => {
-    user.completedTasks.forEach(completeTask => {
-        if (completeTask.task == taskSelected.task) {
-            doneBtn.setAttribute('style', 'display:none');
-            notDoneBtn.setAttribute('style', 'display:inline');
-        } else {
-            doneBtn.setAttribute('style', 'display:inline');
-            notDoneBtn.setAttribute('style', 'display:none');
+    user.completedTasks.forEach(task => {
+        if (task.task == taskSelected.task) {
+            doneBtn.setAttribute('style', 'display: none');
+            notDoneBtn.setAttribute('style', 'display: inline');
+            console.log('oi')
         }
     })
 })
@@ -119,8 +117,18 @@ changeBtn.addEventListener('click', evnt => {
                 task.endHour = tasks.endHour;
                 task.description = tasks.description;
             }
+
+        user.completedTasks.forEach(taskCompleted => {
+            if(taskCompleted.task == taskSelected.task) {
+                let indexTask = user.completedTasks.indexOf(taskCompleted);
+                user.completedTasks.splice(indexTask, 1);
+            } else {
+                return;
+            }
+        })
         })
     });
+
     localStorage.setItem('userList', JSON.stringify(userList));
     msgError.setAttribute('style', 'display:none');
     msgErrorOrSuccess(msgSuccess, 'Tarefa alterada com sucesso!');
@@ -141,10 +149,17 @@ deleteBtn.addEventListener('click', () =>{
                     let indexTask = user.tasksReg.indexOf(task);
                     if (indexTask > -1) {
                         user.tasksReg.splice(indexTask, 1);
+                    }
+                }
+
+                user.completedTasks.forEach(taskCompleted => {
+                    if(taskCompleted.task == taskSelected.task) {
+                        let indexTask = user.completedTasks.indexOf(taskCompleted);
+                        user.completedTasks.splice(indexTask, 1);
                     } else {
                         return;
                     }
-                }
+                })
             })
         });
     
@@ -184,7 +199,6 @@ notDoneBtn.addEventListener('click', () => {
         user.completedTasks.forEach(task => {
             if(task.task == taskSelected.task) {
                 let indexTask = user.completedTasks.indexOf(task);
-                console.log(indexTask)
                 if (indexTask > -1) {
                     user.completedTasks.splice(indexTask, 1);
                 } else {

@@ -94,39 +94,50 @@ submitTask.addEventListener('click', evnt => {
 let statusTask = ''
 userList.forEach((user) => {
     if(user.emailReg == loggedUser.email) {
+
         // Table creation
-        user.tasksReg.forEach((task) => {
-            let today = new Date();
-            beginTime = validateDate(task.beginDate, task.beginHour)
-            endTime = validateDate(task.endDate, task.endHour)
-            
-            if(endTime > today && today > beginTime) {
-                statusTask = 'class="text-primary">Em andamento'
-            } else if (endTime < today) {
-                statusTask = 'class="text-danger">Em Atraso'
-            } else if (today < beginTime){
-                statusTask = 'class="text-warning">Pendente'
-            }
-
-            user.completedTasks.forEach((taskCompleted) => {
-                if(task.task == taskCompleted.task) {
-                    statusTask = 'class="text-success">Realizada'
-                }
-            })
-
+        if(user.tasksReg.length == 0) {
             let contentTable = document.createElement('tr')
             contentTable.innerHTML = `<tr>
-            <td class="taskName" data-bs-toggle="modal" data-bs-target="#exampleModal">${task.task}</td>
-            <td>${task.beginDate} às ${task.beginHour}</td>
-            <td>${task.endDate} às ${task.endHour}</td>
-            <td ${statusTask}</td>
-            <td><button type="button" class="btn btn-warning btn-sm change-btn" data-task="${task.task}" data-beginDate="${task.beginDate}" data-beginHour="${task.beginHour}" data-endDate="${task.endDate}" data-endHour="${task.endHour}" data-description="${task.description}">Alterar</button></td>
-            </tr>
-            `
-
+                <td colspan="5" style="text-align: center;">Nenhuma tarefa cadastrada</td>
+                `
             taskTable.appendChild(contentTable)
-            
-        })
+        } else {
+            user.tasksReg.forEach((task) => {
+                let contentTable = document.createElement('tr')
+                let today = new Date();
+                beginTime = validateDate(task.beginDate, task.beginHour)
+                endTime = validateDate(task.endDate, task.endHour)
+                
+                if(endTime > today && today > beginTime) {
+                    statusTask = 'class="text-primary"><strong>Em andamento</strong>'
+                } else if (endTime < today) {
+                    statusTask = 'class="text-danger"><strong>Em Atraso</strong>'
+                } else if (today < beginTime){
+                    statusTask = 'class="text-warning"><strong>Pendente</strong>'
+                }
+    
+                user.completedTasks.forEach((taskCompleted) => {
+                    if(task.task == taskCompleted.task) {
+                        statusTask = 'class="text-success"><strong>Realizada</strong>'
+                    }
+                })
+                
+                contentTable.innerHTML = `<tr>
+                <td class="taskName" data-bs-toggle="modal" data-bs-target="#exampleModal">${task.task}</td>
+                <td>${task.beginDate} às ${task.beginHour}</td>
+                <td>${task.endDate} às ${task.endHour}</td>
+                <td ${statusTask}</td>
+                <td><button type="button" class="btn btn-primary btn-sm change-btn" data-task="${task.task}" data-beginDate="${task.beginDate}" data-beginHour="${task.beginHour}" data-endDate="${task.endDate}" data-endHour="${task.endHour}" data-description="${task.description}">Alterar</button></td>
+                </tr>
+                `
+    
+                taskTable.appendChild(contentTable)
+                }
+            )
+        }
+
+        
 
         // modal creation
         let taskNames = document.querySelectorAll('.taskName');

@@ -5,28 +5,31 @@
 
 body {
     overflow-x: hidden;
+    background-color: #0a192f;
+    color: 
+    #bfc9e8;
 }
 /* Footer */
 
 .footer_container {
     height: 7vh;
-    background-color: #f0f0f0;
+    background-color: #172a46;
 }
 
 .footer__author {
-    color: gray;
+    color: #c9d3f3;
     font-size: 0.8rem;
 }
 
 .footer__socials i {
     margin-left: 10px;
     font-size: 1.3rem;
-    color: gray;
+    color: #c9d3f3;
     transition: 100ms ease;
 }
 
 .footer__socials i:hover {
-    color: #0d6efd;
+    color: #54d4bc;
     font-size: 1.4rem;
 }
 
@@ -42,4 +45,18 @@ body {
     color: rgb(53, 184, 53);
     padding: .3rem;
     display: none;
+}
+
+.btn-primary {
+    background-color: transparent;
+    border-color: #54d4bc;
+    font-weight: 500;
+    color: #54d4bc;
+}
+
+.btn-primary:hover {
+    background-color: #54d4bc;
+    border-color: #54d4bc;
+    color: #172a46;
+    
 }

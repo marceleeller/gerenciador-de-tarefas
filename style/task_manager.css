@@ -1,6 +1,6 @@
 .header_container {
     height: 7vh;
-    background-color: #f0f0f0;
+    background-color: #172a46;
 }
 
 .main_container { 
@@ -18,17 +18,19 @@
 }
 
 .logoutButton {
-    background-color: #e3e2e2;
-    color: black;
-    border: none;
     cursor: pointer;
     width: 60px;
     transition: 300ms ease;
+    background-color: transparent;
+    border-color: #54d4bc;
+    font-weight: 500;
+    color: #54d4bc;
 }
 .logoutButton:hover {
-    background-color: #0d6efd;
+    background-color: #54d4bc;
+    border-color: #54d4bc;
+    color: #172a46;
 }
-
 
 #doneBtn {
     display: inline;

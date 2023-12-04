@@ -17,6 +17,15 @@
     height: 650px;
     display: flex;
     flex-direction: column;
+    
+}
+
+@media (min-width: 768px) {
+    .main__forms {
+        background-color: #172a46;
+        border-radius: 2rem;
+    }
+    
 }
 
 .forms__login, .forms__register {
@@ -26,14 +35,6 @@
 .main__img img {
     width: 30rem;
     height: 100%;
-}
-
-.bi-eye-fill {
-    position: relative;
-    bottom: 30px;
-    left: 102%;
-    color: gray;
-    cursor: pointer;
 }
 
 form > p {

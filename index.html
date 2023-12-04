@@ -32,19 +32,24 @@
     <div class="container-fluid">
         <main class="main_container row justify-content-center">
             <div class="main__img col-md-6 col-sm-12 align-middle">
-                <img src="assets/Authentication.gif" alt="usuário fazendo login" class="img-fluid mx-auto d-block">
+                <img src="assets/Authentication_dark.gif" alt="usuário fazendo login" class="img-fluid mx-auto d-block">
             </div>
 
             <div class="main__forms col-md-5 col-sm-12 justify-content-center align-items-center py-auto ">
                 <div class="forms__login">
                     <form class="px-4">
-                        <p>Acesse sua conta:</p>
+                        <h4>Acesse sua conta:</h4>
                         <div class="mb-2 ">
                           <input type="email" class="form-control" id="email" placeholder="E-mail" aria-describedby="email">
                         </div>
-                        <div>
+                        <div class="input-group mb-4">
                           <input type="password" class="form-control" id="password" placeholder="Senha">
-                          <i class="bi bi-eye-fill"></i>
+                          <div class="input-group-append">
+                            <span class="input-group-text" onclick="password_show_hide_login();">
+                              <i class="bi bi-eye" id="show_eye"></i>
+                              <i class="bi bi-eye-slash d-none" id="hide_eye"></i>
+                            </span>
+                          </div>
                         </div>
                         <button type="submit" id="signin" class="btn btn-primary">Entrar</button>
                         <span id="msgErrorLogin"></span>
@@ -54,15 +59,21 @@
 
                 <div class="forms__register">
                     <form class="px-4 mt-4">
-                        <p>Novo por aqui? Crie sua conta:</p>
+                        <h4>Novo por aqui? Crie sua conta:</h4>
                         <div class="mb-2 ">
                             <input type="text" class="form-control" id="newName" placeholder="Nome" aria-describedby="Name">
                           </div>
                         <div class="mb-2 ">
                           <input type="email" class="form-control" id="newEmail" placeholder="E-mail" aria-describedby="email">
                         </div>
-                        <div class="mb-4 ">
+                        <div class="mb-4 input-group">
                           <input type="password" class="form-control" id="newPassword" placeholder="Senha">
+                          <div class="input-group-append">
+                            <span class="input-group-text" onclick="password_show_hide_register()">
+                              <i class="bi bi-eye" id="show_eye_register"></i>
+                              <i class="bi bi-eye-slash d-none" id="hide_eye_register"></i>
+                            </span>
+                          </div>
                         </div>
                         <button type="submit" id="register" class="btn btn-primary">Criar conta</button>
                         <span id="msgError"></span>

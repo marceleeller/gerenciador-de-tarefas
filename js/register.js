@@ -147,13 +147,33 @@ $('#signin').addEventListener('click', (evnt) => {
 
 
 // Exibir e esconder senha
-let btn = $('.bi-eye-fill')
-btn.addEventListener('click', () => {
-    let inputPassword = $('#password');
-
-    if(inputPassword.getAttribute('type') == 'password') {
-        inputPassword.setAttribute('type', 'text')
+function password_show_hide_login() {
+    var x = $("#password");
+    var show_eye = $("#show_eye");
+    var hide_eye = $("#hide_eye");
+    hide_eye.classList.remove("d-none");
+    if (x.type === "password") {
+      x.type = "text";
+      show_eye.style.display = "none";
+      hide_eye.style.display = "block";
     } else {
-        inputPassword.setAttribute('type', 'password');
+      x.type = "password";
+      show_eye.style.display = "block";
+      hide_eye.style.display = "none";
     }
-})
+  }
+function password_show_hide_register() {
+    var x = $("#newPassword");
+    var show_eye = $("#show_eye_register");
+    var hide_eye = $("#hide_eye_register");
+    hide_eye.classList.remove("d-none");
+    if (x.type === "password") {
+      x.type = "text";
+      show_eye.style.display = "none";
+      hide_eye.style.display = "block";
+    } else {
+      x.type = "password";
+      show_eye.style.display = "block";
+      hide_eye.style.display = "none";
+    }
+  }
